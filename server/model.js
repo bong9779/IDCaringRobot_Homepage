@@ -45,6 +45,17 @@ module.exports = {
 
     },
     get : {
+        hospitalboard_data : (body, callback) => {
+            Hospitalboards.findAll({
+                where : { board_id : body.id }
+            })
+            .then(result => {
+                callback(result);
+            })
+            .catch(err => {
+                throw err;
+            })
+        },
         //약 복용 데이터 튜플 수 count
         medicrecords_cnt : (body, callback) => {
             let search = "%%";
@@ -237,7 +248,21 @@ module.exports = {
         }
     },
     add : {
-        
+        //게시판 추가
+        hospitalboard : (body, callback) =>{
+            Hospitalboards.create({
+                title: body.title,
+                writer : body.writer,
+                contents : body.contents,
+                writetime : now_date
+            })
+            .then(data =>{
+                callback(true)
+            })
+            .catch(err => {
+                throw err;
+            })
+        },
         //게시판 추가
         board : (body, callback) =>{
             Boards.create({

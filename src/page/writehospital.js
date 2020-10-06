@@ -3,32 +3,33 @@ import './main.css';
 import axios from 'axios';
 import { Navbar, Nav, Form, FormControl, Button, InputGroup, InputGroupProps, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import boardinfo from '../image/patientboardinfo.PNG';
-class board extends Component {
-  constructor(props) {
-    super(props)
-    this.state ={
-      patientid_board : "",
-      patientname_board : "",
-      contents : ""
-  }
-  }
 
+class writehospital extends Component {
+    constructor(props) {
+        super(props)
+        this.state ={
+          title_board : "",
+          writer_board : "",
+          contents : ""
+      }
+    }
+
+    
   _submitBoard = async function() {
-    const patientid_board = document.getElementsByName('patientid_board')[0].value.trim();
-    const patientname_board = document.getElementsByName('patientname_board')[0].value.trim();
+    const title_board = document.getElementsByName('title_board')[0].value.trim();
+    const writer_board = document.getElementsByName('writer_board')[0].value.trim();
     const contents = document.getElementsByName('contents')[0].value.trim();
     // 각 입력 칸이 비어있을때 입력버튼 눌렀으면
-    if(patientid_board === "" ){ 
-        return alert('환자 번호를 입력하시오.');
-    }else if(patientname_board === ""){
-        return alert('환자 아이디를 입력하시오.');
+    if(title_board === "" ){ 
+        return alert('제목을 입력하시오.');
+    }else if(writer_board === ""){
+        return alert('작성자를 입력하시오.');
     }else if(contents === ""){
-        return alert('복용 약 이름을 입력하시오.');
+        return alert('내용을 입력하시오.');
     }
     // 각 데이터 입력값 할당 
-    const data = { patient_id : patientid_board, patientname : patientname_board, contents : contents};
-    const res = await axios ('/add/board',{ //데이터베이스 삽입 요청
+    const data = { title : title_board, writer : writer_board, contents : contents};
+    const res = await axios ('/add/hospitalboard',{ //데이터베이스 삽입 요청
       method: 'POST', 
       data : data,
       headers : new Headers()
@@ -43,18 +44,15 @@ class board extends Component {
   render() {
 
     return (
-      <div>
-        <img src = {boardinfo}
-        width='250'
-        className="boardinfo"/>
-      <div className="Write">
+        <div>
+         <div className="Write">
         <InputGroup>
         <FormControl
          type='text'
-         name='patientid_board'
-         id='patient_id_board'
+         name='title_board'
+         id='title_board'
          width = "100px"
-        placeholder="보낼 환자 번호"
+        placeholder="제목"
         aria-label="Username"
         aria-describedby="basic-addon1"
         />
@@ -63,17 +61,17 @@ class board extends Component {
         <InputGroup>
         <FormControl
          type='text'
-         name='patientname_board'
-         id='patient_name_board'
+         name='writer_board'
+         id='writer_board'
          width = "100px"
-        placeholder="보낼 환자 ID"
+        placeholder="작성인"
         aria-label="Username"
         aria-describedby="basic-addon1"
         />
         </InputGroup>  
 
         <InputGroup>
-        <FormControl as="textarea" id='content_txt1' name='contents' placeholder="내용을 입력하세요." />
+        <FormControl as="textarea" id='content_txt2' name='contents' placeholder="내용을 입력하세요." />
         </InputGroup>
         
         
@@ -84,9 +82,10 @@ class board extends Component {
 
 
       </div>
-      </div>
+        </div>
     );
   }
 }
 
-export default board;
+export default writehospital;
+

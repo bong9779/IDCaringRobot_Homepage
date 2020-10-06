@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './main.css';
+import { Link } from 'react-router-dom';
 import { SearchBoard } from './index.js';
 import axios from 'axios';
 import queryString from 'query-string';
-
-
+import hospitalboardrogo from '../image/hospitalboardrogo.PNG';
+import { Navbar, Nav, Form, FormControl, Button, InputGroup, InputGroupProps, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class hospitalboard extends Component {
     constructor(props) {
         super(props)
@@ -74,8 +76,14 @@ class hospitalboard extends Component {
         const { all_page, page, search } = this.state;
         
         return (
+
+          <div>
+            <img src = {hospitalboardrogo}
+      width='130'
+      className="tableinfo"/>
+          
           <div className='List'>
-    
+            
             <div className='listhospital_grid list_tit'>
               <div> 제목 </div>
               <div> 작성자 </div>
@@ -83,9 +91,11 @@ class hospitalboard extends Component {
             </div>
     
               {list && list.length>0 ? list.map( (el, key) => {
+                const view_url = '/view/' + el.board_id;
+                
                 return(
                   <div className='listhospital_grid list_data' key={key}>
-                    <div> {el.title} </div>
+                    <div> <Link to={view_url}> {el.title} </Link> </div>
                     <div> {el.writer}</div>
                     <div> {el.writetime.slice(0, 10)} </div>
                   </div>
@@ -110,12 +120,19 @@ class hospitalboard extends Component {
                     
                     : null}
                   </ul>
+
+                  
                   <SearchBoard
                     search = {search}
                   />
+
+                <div id='post_submit'>
+                    <Button variant="light"  href="/writehospital">글쓰기</Button>
+                  </div>
                 </div>
                 <div> </div>
               </div>
+          </div>
           </div>
         );
       }

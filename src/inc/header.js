@@ -18,6 +18,7 @@ class header extends Component {
           id : "",
           password : "",
           login : false,
+          loginid: "",
       }
   }
   componentDidMount() {
@@ -44,8 +45,12 @@ class header extends Component {
       }
       if(res.data.suc){ //데이터 받을시 로그인완료
         sessionStorage.setItem('login',true);
-        this.setState({login:true});
+        const loginid = res.data.id;
+        this.setState({
+          login:true,
+          loginid : loginid});
         this._closeModal();
+        
         return alert('로그인 완료'); 
       }else{ //로그인실패
         return alert('아이디 및 비밀번호가 일치하지 않습니다');
@@ -119,28 +124,12 @@ class header extends Component {
 
             <Dropdown.Menu>
             {this.state.login ?
-                  <Dropdown.Item>병원 스케줄</Dropdown.Item>
-                : <Dropdown.Item>병원 스케줄</Dropdown.Item>}
-            {this.state.login ?
                   <Dropdown.Item href="/hospitalboard" >병원 게시판</Dropdown.Item>
                 : <Dropdown.Item>병원 게시판</Dropdown.Item>}
             </Dropdown.Menu>
             </Dropdown>
 
-            <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-            MYPAGE
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-            {this.state.login ?
-                  <Dropdown.Item>스케줄 관리</Dropdown.Item>
-                : <Dropdown.Item>스케줄 관리</Dropdown.Item>}
-            {this.state.login ?
-                  <Dropdown.Item>관리자 문의</Dropdown.Item>
-                : <Dropdown.Item>관리자 문의</Dropdown.Item>}
-            </Dropdown.Menu>
-            </Dropdown>
+          
                     
                 </Nav>
                 <div className='acenter_login'> 

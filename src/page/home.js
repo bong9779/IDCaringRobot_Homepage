@@ -6,17 +6,23 @@ import imgscreen5 from '../image/title3.PNG';
 import imgscreen3 from '../image/doctor1.png';
 import imgscreen4 from '../image/doctor2.png';
 import imgscreen6 from '../image/title4.PNG';
-
+import Overlay from 'react-bootstrap/Overlay'
 import './main.css';
-import { Navbar, Nav, Form, FormControl, Button, Dropdown, CarouselProps, CarouselItem, Carousel, Jumbotron} from 'react-bootstrap';
+import { Tooltip,OverlayTrigger, Navbar, Nav, Form, FormControl, Button, Dropdown, CarouselProps, CarouselItem, Carousel, Jumbotron} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 class home extends Component {
   constructor(props) {
     super(props)
+    
   }
+  
 
   render() {//메인화면 이미지 출력
-
+const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+         ☎  010-9019-5810
+      </Tooltip>
+    );
     return (
       <div>
 
@@ -48,10 +54,15 @@ class home extends Component {
 <h1>ID's Caring Robot</h1>
 <p>
   완화 치료 센터 병원 관계자만 사용 가능합니다.
-  회원가입 후관리자 승인이 완료되면 사용 가능합니다.
 </p>
 <p>
-  <Button variant="secondary">관리자 문의하기</Button>
+<OverlayTrigger
+    placement="right"
+    delay={{ show: 250, hide: 400 }}
+    overlay={renderTooltip}
+  >
+    <Button variant="secondary">관리자 문의하기</Button>
+  </OverlayTrigger>,
 </p>
 </Jumbotron>
 </div>

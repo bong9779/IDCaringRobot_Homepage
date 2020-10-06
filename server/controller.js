@@ -33,7 +33,16 @@ module.exports = {
             console.log('2. hash 결과 : ', hash);
           },
     },
-    get : { //사용자 튜플 수 count model에 요청
+    get : { 
+      hospitalboard_data : (req, res) => {
+        const body = req.body;
+
+        model.get.hospitalboard_data(body, data => {
+          const result = { data : data }
+          res.send(result)
+        })
+      },
+      //사용자 튜플 수 count model에 요청
       users_cnt : (req, res) => {
         const body = req.body;
         model.get.users_cnt(body, cnt => {
@@ -104,6 +113,16 @@ module.exports = {
     },
 
     add : {
+
+      //게시판 입력 값 추가 model에 요청
+      hospitalboard : (req, res) =>{
+        const body = req.body;
+        model.add.hospitalboard(body, result =>{
+          if(result){
+            res.send(true);
+          }
+        })
+      },
       //게시판 입력 값 추가 model에 요청
       board : (req, res) =>{
         const body = req.body;

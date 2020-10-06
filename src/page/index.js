@@ -10,3 +10,4 @@ export { default as Search } from './search';
 export { default as SearchPatient } from './searchpatient';
 export { default as SearchBoard } from './searchboard';
 export { default as HospitalBoard } from './hospitalboard';
+export { default as Writehospital } from './writehospital';
