@@ -36,11 +36,10 @@ let sequelize = new Sequelize(
         console.log('UNABLE TO CONNECT DB!! -> ', err);
     });
     ///사용할 각 데이터베이스 테이블들 
-    db.Admin = require('./Admin')(sequelize,Sequelize);
     db.Timesettings = require('./TimeSettings')(sequelize,Sequelize);
     db.Homepageusers = require('./Homepageusers')(sequelize, Sequelize);
     db.Alltimelists = require('./Alltimelists')(sequelize, Sequelize);
-    db.Boards = require('./Board')(sequelize, Sequelize);
+    db.Boards = require('./Boards')(sequelize, Sequelize);
     db.Users = require('./Users')(sequelize, Sequelize);
     db.Hospitalboards = require('./Hospitalboards')(sequelize, Sequelize);
     db.MedicRecords = require('./MedicRecords')(sequelize, Sequelize);
