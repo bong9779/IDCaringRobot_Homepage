@@ -5,8 +5,8 @@ moment.tz.setDefault("Asia/Seoul");
 
 const now_date = moment().format('YYYY-MM-DD HH:mm:ss');
 const {
-    Alltimelist,
-    Timesetting,
+    Alltimelists,
+    Timesettings,
     Homepageusers,
     Boards,
     Users,
@@ -32,7 +32,7 @@ module.exports = {
         },
         //약 복용 데이터 찾기
         searchOverlap : (body, callback) =>{
-            Timesetting.findAll({
+            Timesettings.findAll({
                 where : { [Op.and]: [{patient_id: body.patient_id, patientname: body.patientname, medName: body.medName }]}
             })
             .then(data => {
@@ -236,7 +236,7 @@ module.exports = {
 
     delete : { //timesetting 입력 값과 같은 값있으면 삭제
         delOverlap : (body, callback) =>{
-            Timesetting.destroy({
+            Timesettings.destroy({
                 where :{ [Op.and]: [{patient_id: body.patient_id, patientname: body.patientname, medName: body.medName }]}
             })
             .then(data => {
@@ -318,7 +318,7 @@ module.exports = {
                 throw err;
             })
 
-            Alltimelist.create({
+            Alltimelists.create({
                 patient_id : body.patient_id,
                 patientname : body.patientname,
                 medName: body.medName,
