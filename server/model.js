@@ -304,7 +304,7 @@ module.exports = {
         //약 주기 입력 값 추가
         timesetting : (body, callback) => {
 
-            Timesetting.create({
+            Timesettings.create({
                 patient_id : body.patient_id,
                 patientname : body.patientname,
                 medName: body.medName,
