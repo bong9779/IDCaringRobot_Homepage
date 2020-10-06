@@ -375,6 +375,11 @@ input[name=signup_email_write] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.mainbutton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 370px;
+}
 .boardinfo{
     margin-left: 70px;
     margin-top: 10px;

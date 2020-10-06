@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import imgscreen from '../image/title.png';
-import imgscreen1 from '../image/img1.PNG';
-import imgscreen2 from '../image/title2.PNG';
-import imgscreen5 from '../image/title3.PNG';
-import imgscreen3 from '../image/doctor1.png';
-import imgscreen4 from '../image/doctor2.png';
-import imgscreen6 from '../image/title4.PNG';
+
+import mainlogo1 from '../image/mainlogo1.PNG';
+
+import mainlogo2 from '../image/mainlogo2.PNG';
+import mainlogo3 from '../image/mainlogo3.PNG';
 import Overlay from 'react-bootstrap/Overlay'
 import './main.css';
 import { Tooltip,OverlayTrigger, Navbar, Nav, Form, FormControl, Button, Dropdown, CarouselProps, CarouselItem, Carousel, Jumbotron} from 'react-bootstrap';
@@ -30,9 +28,9 @@ const renderTooltip = (props) => (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imgscreen6}
-          width="300"
-          height="300"
+          src={mainlogo1}
+          width="50"
+          height="80"
           alt="First slide"
         />
   
@@ -40,9 +38,9 @@ const renderTooltip = (props) => (
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imgscreen2}
-          width="300"
-          height="300"
+          src={mainlogo2}
+          width="50"
+          height="80"
           alt="Second slide"
         />
   
@@ -50,21 +48,25 @@ const renderTooltip = (props) => (
     
     </Carousel>
 
-<Jumbotron>
-<h1>ID's Caring Robot</h1>
-<p>
-  완화 치료 센터 병원 관계자만 사용 가능합니다.
-</p>
-<p>
+    <img
+          className="d-block w-100"
+          src={mainlogo3}
+          height="350"
+
+        />
+  
+
+
 <OverlayTrigger
     placement="right"
     delay={{ show: 250, hide: 400 }}
     overlay={renderTooltip}
   >
-    <Button variant="secondary">관리자 문의하기</Button>
+    <Button className="mainbutton" variant="secondary">
+      관리자 문의하기
+      </Button>
   </OverlayTrigger>,
-</p>
-</Jumbotron>
+
 </div>
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import '../App.css';
 import logo from '../image/logo.PNG';
-
+import nurse from '../image/nurse.PNG';
 import Modal from 'react-awesome-modal';
 import axios from 'axios';
 import imgtitle from '../image/title.png';
@@ -92,7 +92,7 @@ class header extends Component {
     console.log('아이디: ' + this.state.id + ' 비밀번호: '+this.state.password);
     return (
         <div className="Navigation">
-            <Navbar bg="light" variant="light">
+            <Navbar bg="secondary" variant="light">
             <Navbar.Brand href="/"><img width="40" height="40" src={logo}></img></Navbar.Brand>
             <Nav className="mr-auto">
             <Dropdown>
@@ -133,18 +133,19 @@ class header extends Component {
                     
                 </Nav>
                 <div className='acenter_login'> 
-                  {this.state.login ? <Link className='link_tit' to='/'><h6 className='btn_cursor' onClick={() => this._logout()}> 로그아웃 </h6></Link>
+                  {this.state.login ? <Link className='link_tit' to='/'><Button variant="secondary" onClick={() => this._logout()} >로그아웃</Button></Link>
                   : <div className='menu'>
-                      <li><h6 className='btn_cursor'onClick={() => this._openModal()}><Link className='link_tit' to="/">로그인</Link></h6></li>
-                      <li><h6> <Link className='link_tit' to='/signup'> 회원가입</Link></h6></li>
+                      <li><Link className='link_tit' to="/"><Button variant="secondary" onClick={() => this._openModal()}>로그인</Button></Link></li>
+                      <li><Link className='link_tit' to="/signup"><Button variant="secondary">  회원가입</Button></Link></li>
                     </div>
             }
             <Modal visible={this.state.visible} 
-                       width="400" height="310"
+                       width="400" height="350"
                        effect="fadeInDown" 
                        onClickAway={() => this._closeModal()}>
                   <div>
                     <h5 className='acenter_login_tit'> LOGIN </h5>
+                    <img width="50" height="40" src={nurse}></img>
                     <form>
                     <div className='login_div'>
                       <div className='login_input_div'>
@@ -158,10 +159,10 @@ class header extends Component {
                       </div>
 
                       <div className='submit_div'>
-                        <Button variant="outline-secondary"  size="sm"  onClick={() => this._selectUserData()}>로그인</Button>
+                        <Button variant="light"  size="sm"  onClick={() => this._selectUserData()}>로그인</Button>
                         <div>
                         </div>
-                        <Button variant="outline-secondary"  size="sm"  onClick={() => this._closeModal()}>취소</Button>
+                        <Button variant="light"  size="sm"  onClick={() => this._closeModal()}>취소</Button>
                       </div>
                     </div>
                     </form>
